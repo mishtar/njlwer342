@@ -15,10 +15,8 @@ class App extends Component {
   }
 
   agregar(event){
-    if(event.key === 'Enter'){
-      this.setState({list: [...this.state.list,event.target.value], value: ''});
+      this.setState({list: [...this.state.list,this.state.value], value: ''});
       event.preventDefault();
-    }
   }
 
   change(event){
@@ -35,8 +33,8 @@ class App extends Component {
               <li key={index}>{element}</li>
             )}
           </ul>
-           <form>
-             <input type="text" id="new-task" onChange={this.change} value={this.state.value} onKeyPress={this.agregar} placeholder="Ingresa una tarea y oprime Enter" />
+           <form onSubmit={this.agregar}>
+             <input type="text" id="new-task" onChange={this.change} value={this.state.value} placeholder="Ingresa una tarea y oprime Enter" />
            </form>
         </div>
       </div>
